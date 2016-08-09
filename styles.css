@@ -240,6 +240,15 @@ span.error span.details {
 
 .cancel-button {
     background-color: #DD0000;
+    color: #FFF;
+}
+
+body > .close-button {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    border: 1px solid #800;
+    margin: 1rem 0;
 }
 
 .done-button {
