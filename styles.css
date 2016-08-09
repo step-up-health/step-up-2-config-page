@@ -1,0 +1,786 @@
+body {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    width: calc(100vw - 2rem);
+    max-width: 340px;
+    margin: 0 auto;
+    background-color: #FFF;
+    color: #555;
+    font-family: "Roboto", Helvetica, sans-serif;
+}
+
+body.frozen {
+    overflow: hidden;
+}
+
+hr {
+    border: none;
+    height: 0;
+    margin: 1em 0 1em;
+    border-bottom: 1px solid #DDD;
+}
+
+div.card {
+    background-color: #FFF;
+    border-radius: 0.2rem;
+    margin: 1rem 0;
+    padding: 0.25rem;
+    box-sizing: border-box;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1), 0 0.2em 0.5rem rgba(0, 0, 0, 0.2);
+}
+
+div.card.onboarding-view {
+    padding-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 2rem);
+    max-height: 500px;
+}
+
+div.card .card-img {
+    background-image:
+        linear-gradient(135deg, #D9F2B6, #9DD9BA, #5BBDC1, #34A3C2, #247AB5);
+    height: 10rem;
+    margin: -0.25rem -0.25rem 0;
+    overflow: hidden;
+    border-top-right-radius: 0.2rem;
+    border-top-left-radius: 0.2rem;
+    flex-grow: 1;
+    display: flex;
+    align-items: flex-end;
+}
+
+div.card > *:not(.card-img) {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+div.card .username-issues {
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-bottom: 1rem;
+}
+
+div.card .username-issues:not(:empty) {
+    margin-top: -0.5rem;
+    margin-bottom: 0;
+}
+
+div.card .card-img h1 {
+    padding: 0;
+    margin: 0.8rem 1.25rem;
+    font-size: 2em;
+    font-weight: 300;
+    color: #FFF;
+}
+
+div.card.onboarding-view p,
+div.card.onboarding-view label,
+div.card.onboarding-view .input-bar {
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+div.card p {
+    margin-top: 1rem;
+}
+
+h1, h2, h3 {
+    font-weight: 300;
+}
+
+h2, h3 {
+    text-transform: uppercase;
+}
+
+code.debug {
+    max-width: 100%;
+    white-space: pre;
+    display: block;
+    display: none;
+}
+
+span.error {
+    opacity: 0.9;
+    display: block;
+    text-align: center;
+    margin: 2.5em 0;
+}
+
+span.error span.details {
+    display: block;
+    margin-top: 1em;
+    opacity: 0.7;
+    font-size: 90%;
+}
+
+/********* INPUTS *********/
+
+.toggle, .button {
+    padding: 0.3em 0.5em;
+    border-radius: 0.3em;
+    border: none;
+    font-size: 1em;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+.button {
+    font-family: "Roboto", Helvetica, sans-serif;
+}
+
+.toggle {
+    text-decoration: none;
+    margin: 0 0.2em;
+}
+
+.toggle.on {
+    color: #080;
+}
+
+.toggle.off {
+    color: #800;
+}
+
+.toggle.on .show-on,
+.toggle.off .show-off {
+    margin-right: 0.2em;
+}
+
+.toggle.off .show-on,
+.toggle.on .show-off {
+    display: none;
+}
+
+.button {
+    text-decoration: none;
+    color: #46E;
+    margin: 0 0.2em;
+}
+
+.privacy-link {
+    text-shadow: none;
+    color: #888;
+    margin: 0.2rem 0;
+}
+
+.button.disabled {
+    background-color: #BBB;
+}
+
+.follow-button {
+    background-color: #EEE;
+    color: #5596D0;
+    font-size: 0.8rem;
+    padding: 0.5rem 0.7rem;
+    margin: -0.3rem 0;
+    overflow: hidden;
+    transition: color 0.15s ease, background-color 0.15s ease,
+                font-size 0.15s ease, scale 0.25s ease;
+    position: relative;
+}
+
+.follow-button:after {
+    content: "ING";
+    display: inline-block;
+    max-width: 0;
+    opacity: 0;
+    transition: max-width 0.15s linear, opacity 0.15s ease;
+}
+
+.follow-button.following {
+    color: #FFF;
+    background-color: #5596D0;
+}
+
+.follow-button.working {
+    color: transparent;
+}
+
+.follow-button.working:before {
+    color: #5596D0;
+    content: "• • •";
+    width: 30px;
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    margin-left: -15px;
+}
+
+.follow-button.following.working:before {
+    color: #FFF;
+}
+
+.follow-button.following:after {
+    opacity: 1;
+    max-width: 2rem;
+}
+
+.button.hidden {
+    display: none;
+}
+
+.next-button {
+    background-color: #5596D0;
+    transition: flex-basis 0.15s ease 0.1s, background-color 0.15s ease 0.1s,
+                color 0.15s ease 0.1s;
+    flex-basis: 3.5rem;
+}
+
+.next-button.disabled {
+    background-color: #FFF;
+    color: #DDD !important;
+    flex-basis: 1.5rem !important;
+}
+
+.edit-button {
+    background-color: #5596D0;
+}
+
+.cancel-button {
+    background-color: #DD0000;
+}
+
+.done-button {
+    background-color: #00CC00;
+}
+
+.info-button {
+    text-decoration: none;
+    color: #46E;
+    margin: 0 0.2em;
+}
+
+.close-button i, .settings-button i {
+    transform: scale(1.5);
+}
+
+.add-button {
+    background-color: #5596D0;
+    color: #FFF;
+    font-size: 1rem;
+    padding: 0.5rem 0.7rem;
+}
+
+.close-button {
+    color: #800;
+}
+
+.settings-button {
+    color: #555;
+}
+
+.input-bar {
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1), 0 0.1em 0.25rem rgba(0, 0, 0, 0.2);
+    border-radius: 0.2rem;
+    display: flex;
+    margin: 1rem 0;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    background-color: #FFF;
+    z-index: 6;
+}
+
+.input-bar:first-child {
+    margin-top: 0.5rem;
+}
+
+.input-bar .button {
+    border-radius: 0;
+    align-self: stretch;
+    flex-shrink: 0;
+    flex-grow: 0;
+    flex-basis: 3.5rem;
+    font-size: 1rem;
+    text-decoration: none;
+    color: #FFF;
+    margin: 0;
+}
+
+/********* USERNAME ISSUE LIST *********/
+
+.username-issues:empty {
+    opacity: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 2rem;
+}
+
+.username-issues {
+    opacity: 1;
+    transition: opacity 0.15s ease, padding 0.15s ease, margin-bottom 0.15s ease;
+    box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.1), 0 0.05em 0.125rem rgba(0, 0, 0, 0.2);
+    padding: 1rem 1rem 0.75rem;
+    margin: -1rem 1rem 1rem;
+    font-size: 0.8rem;
+    list-style: none;
+    border-bottom-left-radius: 0.2rem;
+    border-bottom-right-radius: 0.2rem;
+    position: relative;
+    /*z-index: -1;*/
+}
+
+.username-issues .available {
+    color: #080;
+}
+
+.username-issues .issue {
+    color: #800;
+}
+
+/********* ACTUAL INPUTS *********/
+
+input[type=text] {
+    width: 5rem;
+    flex-grow: 1;
+    flex-shrink: 1;
+    border: none;
+    font-size: 1.5rem;
+    padding: 0.75rem;
+}
+
+input[type=checkbox] {
+    height: 2rem;
+    width: 2rem;
+    box-sizing: border-box;
+    border: none;
+    margin: 0.5rem;
+}
+
+input[type=checkbox] + label {
+    flex-grow: 1;
+    box-sizing: border-box;
+    border: none;
+    font-size: 1rem;
+    margin: 0.5rem 0.5rem 0.5rem 0;
+}
+
+label:not(.hint):not(.inline) {
+    display: block;
+    margin: 0.2rem 0 0.5rem;
+    font-size: 0.75rem;
+    text-shadow: none;
+    text-transform: uppercase;
+}
+
+label:not(.hint) + .input-bar {
+    margin-top: 0.5rem;
+}
+
+label.hint {
+    display: block;
+    margin: 0.2rem 0;
+    font-size: 0.75rem;
+    text-shadow: none;
+}
+
+/********* EXPANDOS *********/
+
+.lazy-list .list-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lazy-list .list-title span {
+    margin: 0.8rem 0;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.lazy-list hr {
+    margin-top: 0.25em;
+    margin-bottom: 0;
+    transition: margin 0.15s ease, border 0.15s ease;
+}
+
+.lazy-list.collapsed hr {
+    margin-top: 0;
+    border-width: 0;
+    border-color: transparent;
+}
+
+.lazy-list ul {
+    transition: margin 0.15s ease, opacity 0.15s ease;
+    opacity: 1;
+    margin: 0 1rem 1rem;
+    list-style: none;
+    padding: 0;
+}
+
+.lazy-list.collapsed ul {
+    margin: 0 1rem;
+    opacity: 0;
+}
+
+@keyframes list-appear {
+    0% {
+        max-height: 0;
+        padding: 0;
+        opacity: 0;
+        border: none;
+    }
+    100% {
+        max-height: 2em;
+        padding: 0.5rem 0;
+        opacity: 1;
+        border-bottom: 1px solid #DDD;
+    }
+}
+
+.lazy-list li {
+    transition: max-height 0.15s ease, padding 0.15s ease, border 0.15s ease,
+                margin 0.15s ease, opacity 0.15s ease;
+    max-height: 2.5rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #DDD;
+    animation: list-appear 0.15s linear 0s 1 normal none running;
+    -webkit-animation: list-appear 0.15s linear 0s 1 normal none running;
+    overflow: hidden;
+}
+
+.lazy-list li.followed {
+    color: #BBB;
+}
+
+.lazy-list li.has-follow-button {
+    display: flex;
+    justify-content: space-between;
+}
+
+.lazy-list li:last-child {
+    margin-bottom: -0.5rem;
+    border-bottom: none;
+}
+
+.lazy-list.collapsed li:last-child {
+    margin-bottom: 0;
+}
+
+.lazy-list li.follow {
+    padding-top: 1rem;
+}
+
+.lazy-list.collapsed li,
+.lazy-list li.hidden {
+    max-height: 0;
+    padding: 0;
+    border: none;
+    overflow: hidden;
+}
+
+.lazy-list li.hidden {
+    opacity: 0;
+}
+
+.lazy-list li.nobody {
+    color: #888;
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+.lazy-list li.follow {
+    text-align: center;
+}
+
+.lazy-list li .button:not(.add-button) {
+    padding: 0.3rem 0.5rem;
+}
+
+.lazy-list .expando-toggle {
+    transform: rotate(-90deg);
+    font-size: 1em;
+    transition: transform 0.15s ease;
+}
+
+.lazy-list.collapsed .expando-toggle {
+    transform: rotate(0deg);
+}
+
+/********* PROFILE VIEW *********/
+
+.profile {
+    background-color: #FFF;
+    padding-top: 0.25rem;
+}
+
+.profile > span {
+    margin: 1em 0;
+    height: 1em;
+}
+
+.profile .row {
+    display: flex;
+    margin: 1rem 0;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profile .row.spacious {
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.profile span.username {
+    font-size: 1.2rem;
+    color: #333;
+    display: flex;
+}
+
+.profile span.following,
+.profile span.followers {
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+    margin: 0 0.5rem;
+}
+
+.profile span.following span,
+.profile span.followers span {
+    display: inline-block;
+}
+
+.profile span.following:before,
+.profile span.followers:before {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: #888;
+    align-self: center;
+    margin-right: 0.5rem;
+    display: inline-block;
+}
+
+.profile span.following:before {
+    content: "following";
+}
+
+.profile span.followers:before {
+    content: "followers";
+}
+
+.profile div.follows-you span {
+    font-size: 80%;
+    text-transform: uppercase;
+}
+
+.profile div.misc-data:empty {
+    display: none;
+}
+
+.profile div.misc-data span.hidden {
+    display: none;
+}
+
+/********* BARGRAPH *********/
+
+.bargraph {
+    width: 5em;
+    height: 2em;
+    padding: 1em;
+    margin: 0 auto;
+    border-radius: 1em;
+    box-shadow: inset 0 0 1rem #000;
+}
+
+/********* SPINNER *********/
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+.spinner-wrapper {
+    display: block;
+    text-align: center;
+    opacity: 0.5;
+}
+
+#modals > div > .spinner-wrapper {
+    margin: 1rem 0;
+}
+
+.input-bar .spinner-wrapper {
+    margin: 0 0.5rem;
+}
+
+.input-bar input[type=text] ~ .spinner-wrapper {
+    margin: 0 1rem;
+}
+
+.spinner {
+    font-size: 2rem;
+    animation: spin 1s linear 0s infinite normal both running;
+    -webkit-animation: spin 1s linear 0s infinite normal both running;
+}
+
+/********* GRAPH *********/
+
+.activity-graph:empty {
+    margin: 0;
+    height: 0;
+}
+
+.activity-graph {
+    display: flex;
+    height: 4rem;
+    align-items: flex-end;
+    justify-content: flex-end;
+    margin: 0 1rem 1rem;
+    position: relative;
+}
+
+.misc-data:not(:empty) ~ .activity-graph {
+    margin-top: -1rem;
+}
+
+.activity-graph.empty:before {
+    color: #AAA;
+    font-size: 0.6rem;
+    content: "(no step data)";
+    position: absolute;
+    top: calc(50% - 0.5rem);
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+
+.activity-graph div {
+    flex-basis: 1rem;
+    flex-grow: 1;
+    border-radius: 2px;
+    margin: 0 0.1rem;
+    text-align: right;
+    padding: 1px 0 0;
+    background-color: #BBB;
+    position: relative;
+}
+
+.activity-graph div span {
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 500;
+    position: absolute;
+    white-space: nowrap;
+    left: calc(50% + 1px);
+    top: -0.2em;
+    transform: rotate(90deg);
+    transform-origin: left;
+}
+
+/********* MODALS *********/
+
+@keyframes fade-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes fade-out {
+    0% { opacity: 1; }
+    100% { opacity: 0; display: none; }
+}
+
+#modals > div {
+    width: calc(100vw - 2rem);
+    max-width: 340px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    position: fixed;
+    top: 1rem;
+    padding: 0;
+    background-color: #FFF;
+    z-index: 10;
+    border-radius: 0.2rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1), 0 0.2em 0.5rem rgba(0, 0, 0, 0.2);
+    max-height: calc(100vh - 2rem);
+}
+
+#modals > div.profile {
+    padding: 0.25rem;
+}
+
+#modals > div:not(.removed) {
+    animation: fade-in 0.15s ease 0s 1 normal both running;
+    -webkit-animation: fade-in 0.15s ease 0s 1 normal both running;
+}
+
+#modals > div.removed {
+    animation: fade-out 0.15s ease 0s 1 normal both running;
+    -webkit-animation: fade-out 0.15s ease 0s 1 normal both running;
+}
+
+#modals > div > .wrapper > :last-child {
+    margin-bottom: 1.25rem;
+}
+
+#modals > div > .wrapper {
+    max-height: calc(100vh - 7rem);
+    overflow: scroll;
+    font-size: 0.8rem;
+    padding: 0.75rem 1.25rem 0;
+}
+
+#modals > div.text-modal > .wrapper li {
+    list-style-type: circle;
+}
+
+#modals > div.text-modal > .wrapper ul {
+    padding-left: 1rem;
+}
+
+#modals .header-row {
+    display: flex;
+    margin: 1.25rem 1.25rem 1rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#modals .header-row .modal-title {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+#modals .appeared {
+    animation: fade-in 0.15s ease 0s 1 normal both running;
+    -webkit-animation: fade-in 0.15s ease 0s 1 normal both running;
+}
+
+#modals > div > hr {
+    border: none;
+    height: 0;
+    margin: 1rem 1.25rem 0;
+    border-bottom: 1px solid #DDD;
+}
+
+#modals > div.profile > hr {
+    margin: 1rem 1rem 0;
+}
+
+#modals.has-content:before,
+#modals.fading-out:before {
+    content: "";
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    z-index: 9;
+}
+
+#modals.has-content:before {
+    animation: fade-in 0.15s ease 0s 1 normal both running;
+    -webkit-animation: fade-in 0.15s ease 0s 1 normal both running;
+}
+
+#modals.fading-out:before {
+    animation: fade-out 0.15s ease 0s 1 normal both running;
+    -webkit-animation: fade-out 0.15s ease 0s 1 normal both running;
+}
