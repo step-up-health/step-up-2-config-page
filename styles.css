@@ -245,10 +245,11 @@ span.error span.details {
 
 body > .close-button {
     display: block;
-    margin: 0 auto;
+    max-width: 4em;
     text-align: center;
-    border: 1px solid #800;
-    margin: 1rem 0;
+    background-color: #800;
+    color: #FFF;
+    margin: 1rem auto;
 }
 
 .done-button {
