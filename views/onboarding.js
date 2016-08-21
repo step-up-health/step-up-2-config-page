@@ -1,3 +1,29 @@
+function showOnboardingFinishedModal() {
+    var el = document.createElement('div')
+    el.innerHTML = '<div class="header-row">' +
+        '<span class="modal-title">What&apos;s next?</span>' +
+        '<a href="#" class="close-button">' +
+            '<i class="ion ion-close"></i>' +
+        '</a></div><hr/><div class="marginless-wrapper">' +
+        '<img class="explanation" src="explanation.png"/>' +
+        '<ol>' +
+            '<li><p>Follow someone</p>' +
+            '<p class="desc">Find users via the ' +
+            '"Suggested Users" menu.</p>' +
+            '</li>' +
+            '<li><p>Get followers</p>' +
+            '<p class="desc">Give out your username to friends, or set your ' +
+            'profile to public to show up as a suggested user.</p>' +
+            '</li>' +
+            '<li><p>Be active</p>' +
+            '<p class="desc">Compete to see who gets the most steps!</p>' +
+            '</li>' +
+        '</ol>' +
+    '</div>'
+
+    showModal(el)
+}
+
 function registrationView() {
     var mainEl = document.createElement('div')
     mainEl.classList.add('card')
@@ -90,6 +116,7 @@ function registrationView() {
                 window.ownUser.getOwnProfile(function(profile) {
                     window.ownData = profile
                     switchView('main', profile)
+                    showOnboardingFinishedModal()
                 }, function(error) {
                     console.log(error)
                     alert('Looks like something went wrong. Reloading... [2]')

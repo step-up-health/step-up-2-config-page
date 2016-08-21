@@ -737,12 +737,41 @@ label.hint {
     padding: 0.75rem 1.25rem 0;
 }
 
+#modals > div > .marginless-wrapper {
+    max-height: calc(100vh - 7rem);
+    overflow: scroll;
+    padding: 0.75rem 0 0;
+}
+
+#modals > div > .marginless-wrapper > h1,
+#modals > div > .marginless-wrapper > h2,
+#modals > div > .marginless-wrapper > h3,
+#modals > div > .marginless-wrapper > h4,
+#modals > div > .marginless-wrapper > h5,
+#modals > div > .marginless-wrapper > h6,
+#modals > div > .marginless-wrapper > p {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+}
+
 #modals > div.text-modal > .wrapper li {
     list-style-type: circle;
 }
 
 #modals > div.text-modal > .wrapper ul {
     padding-left: 1rem;
+}
+
+#modals .desc {
+    font-size: 0.8rem;
+    margin-top: -0.6rem;
+    margin-right: 1rem;
+}
+
+#modals .explanation {
+    max-width: 100%;
+    box-sizing: border-box;
+    border: 1rem solid black;
 }
 
 #modals .header-row {
